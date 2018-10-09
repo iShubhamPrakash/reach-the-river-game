@@ -4,7 +4,7 @@ This is a game inspired by the Classic Arcade Game "Frogger".
 
 This game has a thirsty character standing at the bottom of the screen and want to reach the river up on the top of the screen to quench his thirst. But there are many nasty bugs moving around. You have to help him reach the river by crossing the road and without hitting any bug.
 
-(Play)[https://i-shubhamprakash.github.io/reach-the-river-game/] and have fun!!
+[Play](https://i-shubhamprakash.github.io/reach-the-river-game/) and have fun!!
 
 ## How to play
 
@@ -16,7 +16,7 @@ This game has a thirsty character standing at the bottom of the screen and want 
 
 ## Play the game live here
 
- (Click to play)[https://i-shubhamprakash.github.io/reach-the-river-game/]
+ [Click to play](https://i-shubhamprakash.github.io/reach-the-river-game/)
 
 ## Technologies used in the project
 
