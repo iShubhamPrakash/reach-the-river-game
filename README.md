@@ -1,6 +1,6 @@
 # Reach the river
 
-This is a game inspired by the Classic Arcade Game "Frogger". 
+This is a game inspired by the Classic Arcade Game "Frogger".
 
 This game has a thirsty character standing at the bottom of the screen and want to reach the river up on the top of the screen to quench his thirst. But there are many nasty bugs moving around. You have to help him reach the river by crossing the road and without hitting any bug.
 
@@ -20,8 +20,7 @@ This game has a thirsty character standing at the bottom of the screen and want 
 
 ## Technologies used in the project
 
- This project is based on basic front-end technologies:
+ This project is based purely on the three pillars of front-end technology:
 1. HTML5
 2. CSS3
 3. JavaScript
-
