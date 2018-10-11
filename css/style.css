@@ -4,3 +4,9 @@ body {
     /* background image from https://tr.depositphotos.com */
     background: #fff url(/images/bug-bg.jpg) repeat;
 }
+
+@media only screen and (max-width:450px){
+    canvas {
+        width: 95vw;
+    }
+}
