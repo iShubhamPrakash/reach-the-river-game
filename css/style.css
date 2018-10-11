@@ -5,6 +5,7 @@ body {
     background: #fff url(/images/bug-bg.jpg) repeat;
 }
 
+/* Responsive optimizations for mobile device */
 @media only screen and (max-width:450px){
     canvas {
         width: 95vw;
