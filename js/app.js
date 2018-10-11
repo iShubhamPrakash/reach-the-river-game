@@ -84,11 +84,14 @@ Player.prototype.handleInput = function(keyPress) {
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
     var allowedKeys = {
-        37: 'left',
-        38: 'up',
-        39: 'right',
-        40: 'down'
+        37: 'left', // left arrow key
+        65: 'left',  // 'A' key
+        38: 'up',   //  up arrow key
+        87: 'up',   // 'W' key
+        39: 'right',  // right arrow key
+        68: 'right',    // 'D' key
+        40: 'down', // Down arrow key
+        83: 'down'  // 'S' Key
     };
-
     player.handleInput(allowedKeys[e.keyCode]);
 });
