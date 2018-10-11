@@ -1,9 +1,3 @@
-const bugWidth = 101;
-const bugHeight = 171;
-const playerWeigth = 101;
-const playerheight = 171;
-const canvasWeight = document.querySelector('canvas').width;
-const canvasHeight = document.querySelector('canvas').height;
 // Enemies our player must avoid
 var Enemy = function() {
     // Variables applied to each of our instances go here,
