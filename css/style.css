@@ -1,4 +1,6 @@
 body {
     text-align: center;
-    background: #fff url(/images/bg.jpg) repeat;
+    margin: 0;
+    /* background image from https://tr.depositphotos.com */
+    background: #fff url(/images/bug-bg.jpg) repeat;
 }
