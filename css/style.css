@@ -5,6 +5,14 @@ body {
     background: #fff url(/images/bug-bg.jpg) repeat;
 }
 
+h1 {
+    font-family: 'Righteous', cursive;
+}
+
+p {
+    font-family: 'K2D', sans-serif;
+}
+
 /* Responsive optimizations for mobile device */
 @media only screen and (max-width:450px){
     canvas {
