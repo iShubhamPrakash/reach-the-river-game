@@ -7,6 +7,10 @@ body {
 
 h1 {
     font-family: 'Righteous', cursive;
+    font-size: 2em;
+    line-height: 0%;
+    margin-top:1.5em;
+    text-shadow: 3px 0px 6px rgba(150, 150, 150, 1);
 }
 
 p {
