@@ -69,13 +69,13 @@ Player.prototype.handleInput = function(keyPress) {
             this.x -= 100;
             break;
         case 'up':
-            this.y -= 100;
+            this.y -= 83;
             break;
         case 'right':
             this.x += 100;
             break;
         case 'down':
-            this.y += 100;
+            this.y += 83;
             break;
     }
 };
