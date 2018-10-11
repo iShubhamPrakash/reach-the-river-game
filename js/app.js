@@ -16,7 +16,7 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    this.x = this.x + this.speed * dt;
+    this.x = this.x + this.speed*dt;
     if (this.x > 500) {
         this.x = -200;
     }
@@ -43,6 +43,7 @@ Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
+
 Player.prototype.update=function(dt) {
 
 }
@@ -50,15 +51,19 @@ Player.prototype.update=function(dt) {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 var allEnemies = [];
-var randomSpeed;
-var bugYpositions=[60, 145, 230] // To put them aligned at the center of three horizontal road
-
+var randomSpeed,randomX;
+// 60,145 and 230 is y location to put the bug aligned at the center of three horizontal road
+// Math.random()*191+50 generate random no between 50 and 240 which put the them y position between the road
+var bugYpositions = [60, 145, 230,145,60,60]
 bugYpositions.forEach(function (bugYposition) {
-    randomSpeed = Math.random() * 100 + 100;
-    allEnemies.push(new Enemy(-100, bugYposition, randomSpeed));
+    randomSpeed = Math.random() * 150 + 50;
+    randomX = Math.random() * 400 * (-1); // generates random no between -400 and 0
+    allEnemies.push(new Enemy(randomX, bugYposition, randomSpeed));
 });
 
-var player = new Player(50, 400);
+var player = new Player(201, 404);
+
+
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
