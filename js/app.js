@@ -63,6 +63,22 @@ bugYpositions.forEach(function (bugYposition) {
 
 var player = new Player(201, 404);
 
+Player.prototype.handleInput = function(keyPress) {
+    switch (keyPress) {
+        case 'left':
+            this.x -= 100;
+            break;
+        case 'up':
+            this.y -= 100;
+            break;
+        case 'right':
+            this.x += 100;
+            break;
+        case 'down':
+            this.y += 100;
+            break;
+    }
+};
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
