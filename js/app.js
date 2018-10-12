@@ -63,6 +63,19 @@ bugYpositions.forEach(function (bugYposition) {
 
 var player = new Player(201, 404);
 
+// Sound for different events
+// I have used HTML5 Audio object which might not be supported in old browser, i.e IE ;)
+
+const clickSound = new Audio('sound/click.ogg');
+const collideSound = new Audio('sound/collide.ogg');
+const gameEndSound = new Audio('sound/game-end.wav');
+const moveSound = new Audio('sound/move.oga');
+const riverSound = new Audio('sound/river.ogg');
+
+// clickSound.play();
+// clickSound.currentTime = 0;
+
+
 Player.prototype.handleInput = function (keyPress) {
     switch (keyPress) {
         case 'left':
@@ -78,6 +91,9 @@ Player.prototype.handleInput = function (keyPress) {
             this.y += 83;
             break;
     }
+    // Plays a sound on player move
+    moveSound.play();
+    moveSound.currentTime = 0;
 };
 
 // This listens for key presses and sends the keys to your
@@ -96,7 +112,6 @@ document.addEventListener('keyup', function (e) {
     player.handleInput(allowedKeys[e.keyCode]);
 });
 
-
 // On screen button functionality for mobile device
 const controlButtons = document.querySelectorAll('.control-btn');
 
@@ -104,18 +119,18 @@ controlButtons.forEach(function (controlButton) {
     controlButton.addEventListener("click", function (e) {
         switch (this.id) {
             case 'up-btn':
-            player.handleInput('up');
+                player.handleInput('up');
                 break;
             case 'down-btn':
-            player.handleInput('down');
+                player.handleInput('down');
                 break;
 
             case 'left-btn':
-            player.handleInput('left');
+                player.handleInput('left');
                 break;
 
             case 'right-btn':
-            player.handleInput('right');
+                player.handleInput('right');
                 break;
         }
     });
