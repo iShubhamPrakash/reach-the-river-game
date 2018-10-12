@@ -1,4 +1,5 @@
 let score = 0;
+let crossedRiver = true; //to check if player has crossed the river
 const playerStartXposition = 201;
 const playerStartYposition = 404;
 
@@ -84,13 +85,11 @@ Player.prototype.handleInput = function (keyPress) {
         case 'left':
             if (this.x > 10)
                 this.x -= 100;
-             else
+            else
                 this.x = 1;
 
             break;
-        case 'up':
-            this.y -= 83;
-            break;
+
         case 'right':
             if (this.x < 390)
                 this.x += 100;
@@ -98,6 +97,7 @@ Player.prototype.handleInput = function (keyPress) {
                 this.x = 401;
 
             break;
+
         case 'down':
             if (this.y < 400)
                 this.y += 83;
@@ -105,6 +105,16 @@ Player.prototype.handleInput = function (keyPress) {
                 this.y = 404;
 
             break;
+
+        case 'up':
+            if (this.y > 10)
+                this.y -= 83;
+
+            // The player wins if he enters the river
+            if (this.y == -11) {
+                riverReached(this);
+            }
+
     }
     // Plays a sound on player move
     moveSound.play();
@@ -149,3 +159,36 @@ controlButtons.forEach(function (controlButton) {
         }
     });
 });
+
+
+const scoreValue = document.querySelector('.score');
+
+function riverReached(ref) {
+    // Play the sound
+    riverSound.play();
+    riverSound.currentTime = 0;
+    // reset the player position and update score after 500ms
+    setTimeout(function () {
+        resetPlayerPosition(ref);
+        crossedRiver = true;
+    }, 500);
+
+    if (crossedRiver)
+    scoreUpdate();
+
+}
+
+
+function resetPlayerPosition(ref) {
+    ref.x = playerStartXposition;
+    ref.y = playerStartYposition;
+}
+
+function scoreUpdate(){
+    // score increase
+    score += 10;
+    // update score value on the display
+    scoreValue.innerHTML = score;
+    // setting back crossRiver to false
+    crossedRiver = false;
+}
