@@ -3,6 +3,7 @@ body {
     margin: 0;
     /* background image from https://tr.depositphotos.com */
     background: #fff url(/images/bug-bg.jpg) repeat;
+    overflow-x: hidden;
 }
 
 h1 {
@@ -42,6 +43,10 @@ p {
     box-shadow: 3px 0px 6px rgba(150, 150, 150, 1);
 }
 
+.control-container {
+display: none;
+}
+
 .footer {
     background-color: rgba(114, 3, 71, 0.671);
     color: #fff;
@@ -49,13 +54,9 @@ p {
     padding:2px;
 }
 
-/* Responsive optimizations for mobile device */
-@media only screen and (max-width:550px) {
 
-    body {
-        /* height: 100vh; */
-        overflow: hidden;
-    }
+/* Responsive optimizations for mobile and tablet device */
+@media only screen and (max-width:767px) {
 
     h1 {
         margin-top: 1.5em;
@@ -72,6 +73,10 @@ p {
         margin-top: 2em;
         margin-bottom: 1em;
     }
+
+    .control-container {
+        display: unset;
+        }
 
     .footer {
         width: 100%;
