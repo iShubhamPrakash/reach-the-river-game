@@ -12,17 +12,27 @@
 </head>
 
 <body>
-    <div>
+    <header>
         <h1>Reach the river game</h1>
-        <i class="fa fa-heart" style="color:red;"> </i> :<span id="life"></span>
-        <i class="fa fa-trophy"></i>
+    </header>
+
+    <div class="score-card">
+        <span class="life-box">
+            LIFE <i class="fa fa-heartbeat"> </i> :
+            <i class="fa fa-heart" style="color:red;"> </i>
+            <i class="fa fa-heart" style="color:red;"> </i>
+            <i class="fa fa-heart" style="color:red;"> </i>
+        </span>
+        <span class="score-box">
+            SCORE <i class="fa fa-trophy"></i> : <span class="score">000</span>
+        </span>
     </div>
 
     <canvas id="my-canvas" width="505" height="590">
     </canvas>
 
     <footer class="footer">
-        <p>Made with <i class="fa fa-heart" style="color:red;"> </i> by Shubham</p>
+        <p>Made with <i class="fa fa-heart" style="color:red;"> </i> by Shubham Prakash</p>
     </footer>
 
     <script src="js/resources.js"></script>

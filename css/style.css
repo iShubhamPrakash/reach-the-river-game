@@ -7,19 +7,73 @@ body {
 
 h1 {
     font-family: 'Righteous', cursive;
-    font-size: 2em;
-    line-height: 0%;
-    margin-top:1.5em;
+    font-size: 3em;
+    margin-top: 1em;
+    line-height: 0;
     text-shadow: 3px 0px 6px rgba(150, 150, 150, 1);
+    color: rgb(114, 3, 71);
+}
+
+
+canvas {
+    margin-top: -30px;
 }
 
 p {
     font-family: 'K2D', sans-serif;
 }
 
+.score-card {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+
+    display: flex;
+    justify-content: space-around;
+    text-shadow: 3px 0px 6px rgba(150, 150, 150, 1);
+}
+
+.life-box,
+.score-box {
+    background: #fff;
+    padding: 10px;
+    border-radius: 25px;
+    border: 2px rgb(114, 3, 71) solid;
+    box-shadow: 3px 0px 6px rgba(150, 150, 150, 1);
+}
+
+.footer {
+    background-color: rgba(114, 3, 71, 0.671);
+    color: #fff;
+    margin: 0;
+    padding:2px;
+}
+
 /* Responsive optimizations for mobile device */
-@media only screen and (max-width:450px){
+@media only screen and (max-width:550px) {
+
+    body {
+        /* height: 100vh; */
+        overflow: hidden;
+    }
+
+    h1 {
+        margin-top: 1.5em;
+        font-size: 2em;
+    }
+
     canvas {
-        width: 95vw;
+        width: 96vw;
+    }
+
+    .score-card {
+        width: unset;
+        font-size: 1.2em;
+        margin-top: 2em;
+        margin-bottom: 1em;
+    }
+
+    .footer {
+        width: 100%;
     }
 }
