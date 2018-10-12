@@ -1,4 +1,5 @@
 let score = 0;
+let life = 3;
 let crossedRiver = true; //to check if player has crossed the river
 const playerStartXposition = 201;
 const playerStartYposition = 404;
@@ -34,8 +35,8 @@ Enemy.prototype.update = function (dt) {
         this.x = -200;
     }
 
-    // checkCollision();
-
+    // Check collision with the player
+    checkCollision(this);
 };
 
 // Draw the enemy on the screen, required method for game
@@ -174,7 +175,7 @@ function riverReached(ref) {
     }, 500);
 
     if (crossedRiver)
-    scoreUpdate();
+        scoreUpdate();
 
 }
 
@@ -184,11 +185,32 @@ function resetPlayerPosition(ref) {
     ref.y = playerStartYposition;
 }
 
-function scoreUpdate(){
+function scoreUpdate() {
     // score increase
     score += 10;
     // update score value on the display
     scoreValue.innerHTML = score;
     // setting back crossRiver to false
     crossedRiver = false;
+}
+
+function checkCollision(ref) {
+    // Here ref is Reference to the enemy object from where this function is called
+    if (player.x < ref.x + 60 &&
+        player.x + 37 > ref.x &&
+        player.y < ref.y + 25 &&
+        30 + player.y > ref.y) {
+        console.log("collision");
+        if (life == 0) {
+            // GameOver
+        } else {
+            // Life decrease
+            life--;
+            collideSound.play();
+            collideSound.currentTime = 0;
+        }
+
+        // Call resetPlayerPosition to reset the player position
+        resetPlayerPosition(player);
+    }
 }
