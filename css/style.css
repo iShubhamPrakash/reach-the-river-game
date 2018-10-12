@@ -44,14 +44,14 @@ p {
 }
 
 .control-container {
-display: none;
+    display: none;
 }
 
 .footer {
     background-color: rgba(114, 3, 71, 0.671);
     color: #fff;
     margin: 0;
-    padding:2px;
+    padding: 2px;
 }
 
 
@@ -76,7 +76,7 @@ display: none;
 
     .control-container {
         display: unset;
-        }
+    }
 
     .footer {
         width: 100%;

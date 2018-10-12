@@ -1,19 +1,31 @@
+let score = 0;
+const playerStartXposition = 201;
+const playerStartYposition = 404;
+
+// Sound for different events
+// I have used HTML5 Audio object which might not be supported in older browser, i.e IE ;)
+const clickSound = new Audio('sound/click.ogg');
+const collideSound = new Audio('sound/collide.ogg');
+const gameEndSound = new Audio('sound/game-end.wav');
+const moveSound = new Audio('sound/move.oga');
+const riverSound = new Audio('sound/river.ogg');
+
+
 // Enemies our player must avoid
 var Enemy = function (xPosition, yPosition, speed) {
     // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
     this.x = xPosition;
     this.y = yPosition;
     this.speed = speed;
     // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
+    // a helper in engine.js to easily load images
     this.sprite = 'images/enemy-bug.png';
 };
 
-// Update the enemy's position, required method for game
+// Updating the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function (dt) {
-    // You should multiply any movement by the dt parameter
+    // Multiplying any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
     this.x = this.x + this.speed * dt;
@@ -30,13 +42,13 @@ Enemy.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-// Now write your own player class
+// player class using which we will instanciate player objects
 // This class requires an update(), render() and
 // a handleInput() method.
-var Player = function (xPosition, yPosition) {
+var Player = function (xPosition, yPosition, playerImage) {
     this.x = xPosition;
     this.y = yPosition;
-    this.sprite = 'images/char-boy.png';
+    this.sprite = playerImage;
 }
 
 Player.prototype.render = function () {
@@ -47,6 +59,10 @@ Player.prototype.render = function () {
 Player.prototype.update = function (dt) {
 
 }
+
+// Life of each player
+Player.prototype.life = 3;
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
@@ -61,34 +77,33 @@ bugYpositions.forEach(function (bugYposition) {
     allEnemies.push(new Enemy(randomX, bugYposition, randomSpeed));
 });
 
-var player = new Player(201, 404);
-
-// Sound for different events
-// I have used HTML5 Audio object which might not be supported in old browser, i.e IE ;)
-
-const clickSound = new Audio('sound/click.ogg');
-const collideSound = new Audio('sound/collide.ogg');
-const gameEndSound = new Audio('sound/game-end.wav');
-const moveSound = new Audio('sound/move.oga');
-const riverSound = new Audio('sound/river.ogg');
-
-// clickSound.play();
-// clickSound.currentTime = 0;
-
+var player = new Player(playerStartXposition, playerStartYposition, 'images/char-boy.png');
 
 Player.prototype.handleInput = function (keyPress) {
     switch (keyPress) {
         case 'left':
-            this.x -= 100;
+            if (this.x > 10)
+                this.x -= 100;
+             else
+                this.x = 1;
+
             break;
         case 'up':
             this.y -= 83;
             break;
         case 'right':
-            this.x += 100;
+            if (this.x < 390)
+                this.x += 100;
+            else
+                this.x = 401;
+
             break;
         case 'down':
-            this.y += 83;
+            if (this.y < 400)
+                this.y += 83;
+            else
+                this.y = 404;
+
             break;
     }
     // Plays a sound on player move
@@ -114,7 +129,6 @@ document.addEventListener('keyup', function (e) {
 
 // On screen button functionality for mobile device
 const controlButtons = document.querySelectorAll('.control-btn');
-
 controlButtons.forEach(function (controlButton) {
     controlButton.addEventListener("click", function (e) {
         switch (this.id) {
