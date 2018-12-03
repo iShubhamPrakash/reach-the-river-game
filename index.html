@@ -15,16 +15,41 @@
     <header>
         <h1>Reach the river game</h1>
     </header>
+    <div class="player-card boxyfy">
+        <h1>Welcome</h1>
+        <h2>Choose Your Character</h2>
+        <div class="character-container flex-container">
+            <div class="character boxyfy" id="character1">
+                <img src="/images/char-boy.png" onerror="this.src='https://image.ibb.co/foaWB9/char-boy.png'" alt="player character image">
+                <br>
+                <p>Demon Boy</p>
+            </div>
+            <div class="character boxyfy" id="character2">
+                <img src="/images/char-horn-girl.png" onerror="this.src='https://image.ibb.co/bY9rB9/char-horn-girl.png'" alt="player character image">
+                <br>
+                <p>Horn Girl</p>
+            </div>
+            <div class="character boxyfy" id="character3">
+                <img src="/images/char-princess-girl.png" onerror="this.src='https://image.ibb.co/b33Jr9/char-princess-girl.png'" alt="player character image">
+                <br>
+                <p>Princess</p>
+            </div>
+            <div class="margin-fix"></div>
+        </div>
+    </div>
+
 
     <div class="score-card">
         <span class="life-box">
-            LIFE <i class="fa fa-heartbeat"> </i> :
-            <i class="fa fa-heart" style="color:red;"> </i>
-            <i class="fa fa-heart" style="color:red;"> </i>
-            <i class="fa fa-heart" style="color:red;"> </i>
+            <i class="fa fa-heartbeat"> </i> LIFE :
+            <span class="heart-box">
+                <i class="fa fa-heart life" style="color:red;"> </i>
+                <i class="fa fa-heart life" style="color:red;"> </i>
+                <i class="fa fa-heart life" style="color:red;"> </i>
+            </span>
         </span>
         <span class="score-box">
-            SCORE <i class="fa fa-trophy"></i> : <span class="score">000</span>
+            <i class="fa fa-trophy"> </i> SCORE : <span class="score">0 </span>
         </span>
     </div>
 
@@ -44,10 +69,71 @@
         </div>
     </div>
 
-    <footer class="footer">
-        <p>Made with <i class="fa fa-heart" style="color:red;"> </i> by Shubham Prakash</p>
-    </footer>
+    <div class="instruction boxyfy">
+        <h1>About The Game</h1>
+        <hr>
 
+        <p>
+            This is a game inspired by the Classic Arcade Game "Frogger".
+            <br>
+            <br>
+            This game has a thirsty character standing at the bottom of the screen and want to reach the river up on
+            the top of the screen to quench his thirst. But there are many nasty bugs moving around who dontn't want
+            the character reach the river. You have to help
+            him reach the river by crossing the road and without hitting any bug.
+        </p>
+
+        <h1>How To Play</h1>
+        <hr>
+        <p>
+            1. Use the arrow keys to move the character Up, Down, Left and Right.
+            <br>
+            <br>
+            2. You have total 3 lives, you loose one when you hit a bug.
+            <br>
+            <br>
+            3. You get 10 point every time you are successful crossing the road.
+            <br>
+            <br>
+            4. Collect gems and life to score more.
+            <br>
+            <br>
+            5. You have to score 100 points to win the game.
+        </p>
+
+    </div>
+
+
+    <footer class="footer">
+        <p style="font-weight: bold; ">Made with <i class="fa fa-heart" style="color:red;"> </i> by Shubham Prakash</p>
+
+        <div class="contact-logo-holder">
+
+            <a href="https://github.com/i-shubhamprakash" class="contact-link" target="_blank">
+                <i class="fa fa-github fa-2x contact-logo github"></i>
+            </a>
+
+            <a href="https://www.linkedin.com/in/ishubhamprakash" class="contact-link" target="_blank">
+                <i class="fa fa-linkedin fa-2x contact-logo linkedin"></i>
+            </a>
+
+            <a href="https://twitter.com/iSuvm" class="contact-link" target="_blank">
+                <i class="fa fa-twitter fa-2x contact-logo twitter"></i>
+            </a>
+
+            <a href="https://plus.google.com/u/0/110923160423915980174" class="contact-link" target="_blank">
+                <i class="fa fa-google-plus fa-2x contact-logo google"></i>
+            </a>
+
+            <a href="https://www.facebook.com/i.suvm" class="contact-link" target="_blank">
+                <i class="fa fa-facebook fa-2x contact-logo facebook"></i>
+            </a>
+        </div>
+        <p>(shubham.prakash2308@gmail.com)</p>
+    </footer>
+    <!-- CDN for SWAl: A libraty for Sweet alert  -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- All javascript files necessary for the game -->
     <script src="js/resources.js"></script>
     <script src="js/app.js"></script>
     <script src="js/engine.js"></script>

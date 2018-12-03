@@ -1,8 +1,11 @@
 body {
     text-align: center;
     margin: 0;
+    background: rgb(245, 234, 234);
     /* background image from https://tr.depositphotos.com */
-    background: #fff url(/images/bug-bg.jpg) repeat;
+    background-image: url('https://image.ibb.co/bKtm9U/bug-bg3.jpg');
+    background-repeat: repeat;
+    background-attachment: fixed;
     overflow-x: hidden;
 }
 
@@ -47,20 +50,165 @@ p {
     display: none;
 }
 
-.footer {
-    background-color: rgba(114, 3, 71, 0.671);
-    color: #fff;
-    margin: 0;
-    padding: 2px;
+.life {
+    padding: 1.3px;
 }
+
+.boxyfy {
+    padding: 1.5em;
+    margin: 6em;
+    border-radius: 8px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border: 0px solid #000000;
+
+    -webkit-box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.38);
+    -moz-box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.38);
+    box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.38);
+
+    background-color: rgb(255, 255, 255);
+    border-top: 4px solid rgb(212, 20, 84);
+    border-bottom: 4px solid rgb(212, 20, 84);
+}
+
+.player-card {
+    background: #dad1d4;
+    padding: 1em;
+    width: 60vw;
+    height: 80vh;
+    position: fixed;
+    left: 50vw;
+    margin-left: -30vw;
+    top: -3vh;
+}
+
+.character-container {
+    display: flex;
+    justify-content: space-around;
+    overflow-x: auto;
+}
+
+.character {
+    margin: 10px 20px;
+}
+
+.margin-fix {
+    display: none;
+}
+
+.hide {
+    display: none !important;
+}
+
+/********** Footer ***************/
+.footer {
+    background-color: rgb(221, 211, 217);
+    padding: 1em;
+    margin: 0;
+    text-align: center;
+}
+
+/********** customization of buttons and font awesome contact icons***************/
+.contact {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-logo-holder {
+    text-align: center;
+}
+
+.contact-link {
+    text-decoration: unset;
+    padding: 5px;
+}
+
+.heart {
+    color: #ec3e2e;
+}
+
+.github {
+    color: #2e3c49;
+}
+
+.linkedin {
+    color: #0077b5;
+}
+
+.twitter {
+    color: #1da1f3;
+}
+
+.google {
+    color: #dc4538;
+}
+
+.facebook {
+    color: #3b5998;
+}
+
+/***********************************************************/
+
+/* Swal alert customization */
+
+.swal-title {
+    font-size: 46px;
+}
+
+.swal-text {
+    font-size: 25px;
+}
+
+.swal-button {
+    padding: 14px 19px;
+    border-radius: 4px;
+    background-color: rgb(182, 14, 78);
+    font-size: 18px;
+    border: 1px solid rgba(201, 99, 138, 0.726);
+    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
+
+}
+
+
 
 
 /* Responsive optimizations for mobile and tablet device */
 @media only screen and (max-width:767px) {
 
+    body {
+        background: rgb(181, 224, 246);
+        background: radial-gradient(circle, rgba(181, 224, 246, 1) 0%, rgba(247, 195, 197, 1) 97%);
+    }
+
     h1 {
         margin-top: 1.5em;
         font-size: 2em;
+    }
+
+    .player-card {
+        padding: 1em;
+        width: 80vw;
+        top: -4vh;
+        left: unset;
+        height: 75vh;
+    }
+
+    .character-container {
+        margin-top: -10vh;
+    }
+
+    .margin-fix {
+        display: flex;
+        width: 50vw;
+        padding: 0 8vw;
+    }
+
+    #character1 {
+        margin-left: 100vw;
+    }
+
+    .character {
+        display: inline;
     }
 
     canvas {
@@ -78,7 +226,8 @@ p {
         display: unset;
     }
 
-    .footer {
-        width: 100%;
+    .boxyfy {
+        margin: 1em;
+        margin-top: 6em;
     }
 }

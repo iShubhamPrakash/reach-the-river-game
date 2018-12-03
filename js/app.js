@@ -3,14 +3,12 @@ let life = 3;
 let crossedRiver = true; //to check if player has crossed the river
 const playerStartXposition = 201;
 const playerStartYposition = 404;
-
 // Sound for different events
 // I have used HTML5 Audio object which might not be supported in older browser, i.e IE ;)
-const clickSound = new Audio('sound/click.ogg');
 const collideSound = new Audio('sound/collide.ogg');
-const gameEndSound = new Audio('sound/game-end.wav');
+const gameEndSound = new Audio('sound/end.ogg');
 const moveSound = new Audio('sound/move.oga');
-const riverSound = new Audio('sound/river.ogg');
+const riverSound = new Audio('sound/river.wav');
 
 
 // Enemies our player must avoid
@@ -31,12 +29,14 @@ Enemy.prototype.update = function (dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
     this.x = this.x + this.speed * dt;
+
+    //Rest bug position when it crosses the canvas
     if (this.x > 500) {
         this.x = -200;
     }
 
     // Check collision with the player
-    checkCollision(this);
+    bugCollide(checkCollision(this));
 };
 
 // Draw the enemy on the screen, required method for game
@@ -62,8 +62,6 @@ Player.prototype.update = function (dt) {
 
 }
 
-// Life of each player
-Player.prototype.life = 3;
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
@@ -124,7 +122,8 @@ Player.prototype.handleInput = function (keyPress) {
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
-document.addEventListener('keyup', function (e) {
+document.addEventListener('keydown', function (e) {
+    e.preventDefault();
     var allowedKeys = {
         37: 'left', // left arrow key
         65: 'left', // 'A' key
@@ -175,37 +174,66 @@ function riverReached(ref) {
     }, 500);
 
     if (crossedRiver)
-        scoreUpdate();
+        getScore(); // Increse the score by 10
 
 }
 
 
+// To set player position back to normal
 function resetPlayerPosition(ref) {
     ref.x = playerStartXposition;
     ref.y = playerStartYposition;
 }
 
-function scoreUpdate() {
+function getScore() {
     // score increase
     score += 10;
-    // update score value on the display
-    scoreValue.innerHTML = score;
+
+    // if score is 100, player wins and a popup is shown (Popup is shown using swal library)
+    // https://sweetalert.js.org
+    if (score == 100) {
+        gameEndSound.play();
+        gameEndSound.currentTime = 0;
+        swal("You Won!", `Your Score= ${score}`, "success", {
+                button: "Play Again",
+            })
+            .then((value) => gameReset());
+    }
+
+    scoreUpdate();
     // setting back crossRiver to false
     crossedRiver = false;
 }
 
+function scoreUpdate() {
+    // update and shows score value on the display
+    scoreValue.innerHTML = score;
+}
+
 function checkCollision(ref) {
-    // Here ref is Reference to the enemy object from where this function is called
-    if (player.x < ref.x + 60 &&
-        player.x + 37 > ref.x &&
-        player.y < ref.y + 25 &&
-        30 + player.y > ref.y) {
+    // Here ref is Reference to the object from where this function is called
+    if (player.y < ref.y + 25 &&
+        30 + player.y > ref.y &&
+        player.x < ref.x + 60 &&
+        player.x + 37 > ref.x
+    ) {
         console.log("collision");
-        if (life == 0) {
+        return true;
+    }
+}
+
+function bugCollide(result) {
+    if (result) {
+
+        if (life == 1) {
             // GameOver
+            gameOver();
+            gameEndSound.play();
+            gameEndSound.currentTime = 0;
         } else {
             // Life decrease
-            life--;
+            loseLife();
+            // showLifeStar
             collideSound.play();
             collideSound.currentTime = 0;
         }
@@ -214,3 +242,78 @@ function checkCollision(ref) {
         resetPlayerPosition(player);
     }
 }
+
+
+function gameOver() {
+    //Show popup then reset the game on clicking play again
+    swal("Game Over!", `Your Score= ${score}`, "error", {
+            button: "Play Again",
+        })
+        .then((value) => gameReset());
+
+}
+
+function gameWin() {
+    //Show popup then reset the game on clicking play again
+    swal("You Won!", `Your Score= ${score}`, "success", {
+            button: "Play Again",
+        })
+        .then((value) => gameReset());
+}
+
+function gameReset() {
+    console.log('reset');
+
+    score = 0;
+    scoreUpdate();
+    life = 3;
+    updateLife()
+    resetPlayerPosition(player);
+}
+
+function getLife() {
+    life++;
+    updateLife();
+}
+
+function loseLife() {
+    life--;
+    updateLife();
+}
+
+
+const hearts = document.getElementsByClassName("heart-box")[0];
+
+function updateLife() {
+    // show correct no of life on the screen
+    while (hearts.firstChild) {
+        hearts.removeChild(hearts.firstChild);
+    }
+    let i, n;
+    for (i = 0; i < life; i++) {
+        // hearts.appendChild(document.createElement("I").classList.add("fa fa-heart life"));
+        n = document.createElement("I");
+        n.className = "fa fa-heart life";
+        n.style.color = "red";
+        hearts.appendChild(n);
+    }
+
+}
+
+// choose character feature
+const playerCard = document.querySelector('.player-card')
+
+document.querySelector("#character1").addEventListener('click', (e) => {
+    player.sprite = 'images/char-boy.png';
+    playerCard.classList.add("hide");
+});
+
+document.querySelector("#character2").addEventListener('click', (e) => {
+    player.sprite = 'images/char-horn-girl.png';
+    playerCard.classList.add("hide");
+});
+
+document.querySelector("#character3").addEventListener('click', (e) => {
+    player.sprite = 'images/char-princess-girl.png';
+    playerCard.classList.add("hide");
+});
