@@ -16,6 +16,15 @@ the character reach the river. You have to help him reach the river by crossing 
 4. Collect gems and life to score more.
 5. You have to score 100 points to win the game.
 
+<img width="1499" alt="Screenshot 2022-07-30 at 2 32 24 AM" src="https://user-images.githubusercontent.com/28767301/181842649-86f0ac90-9b1d-4a25-b20a-9f912c24c01a.png">
+
+<img width="1499" alt="Screenshot 2022-07-30 at 2 32 30 AM" src="https://user-images.githubusercontent.com/28767301/181842668-a42c6a72-778e-4223-93d7-bbfa83b3822a.png">
+
+<img width="1499" alt="Screenshot 2022-07-30 at 2 32 34 AM" src="https://user-images.githubusercontent.com/28767301/181842675-ce50c56f-6533-47c9-a1d0-09e6b15c9c69.png">
+
+<img width="1499" alt="Screenshot 2022-07-30 at 2 32 47 AM" src="https://user-images.githubusercontent.com/28767301/181842684-d173c11a-2317-483d-82ab-2d7ecb3e9f27.png">
+
+
 ## Play the game live here
 
 [Click to play](https://i-shubhamprakash.github.io/reach-the-river-game/)
